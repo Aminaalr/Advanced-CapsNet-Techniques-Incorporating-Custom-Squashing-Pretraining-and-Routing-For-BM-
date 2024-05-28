@@ -192,7 +192,7 @@ def Gnet_capsNet_model(n_routings=3):
         cSoft = Lambda(squash, name='squash2')(cSoft)
         # Multiply
         GNnetCaps = Multiply()([GNnet_Caps, cSoft])
-        # LekyRelu layer
+        # conditional_prelu
         sJ = Lambda(conditional_prelu)([ GNnetCaps, cSoft])
     # Output Dense as 32
     GNnetCaps = Dense(32, activation='relu')(sJ)
